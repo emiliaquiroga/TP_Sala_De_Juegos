@@ -1,6 +1,10 @@
 # SalaDeJuegos
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
+I use Tailwind CSS for the styles. 
+
+This page is hosted in: https://sala-de-juegos-labo-4.web.app/ 
+
 
 ## Development server
 
