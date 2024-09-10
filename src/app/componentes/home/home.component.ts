@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class AppComponent {
-  title = 'Sala de juegos';
-
+export class HomeComponent{
+  paginaActual = "Home";
   constructor(private router:Router){
 
   }
@@ -18,5 +17,4 @@ export class AppComponent {
   irA(path: string){
     this.router.navigate([path]);
   }
-
 }

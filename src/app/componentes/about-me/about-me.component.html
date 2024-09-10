@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí</title>
+</head>
+<body class="bg-cover bg-center bg-fixed dark: bg-[#321C3A]">
+    <section class="bg-[#893161]">
+        <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row">
+            <div class="flex items-center absolute top-0 left-0 p-4 w-full md:w-auto">
+                <h1 class="text-2xl font-bold text-black ml-4">
+                    {{ paginaActual }}
+                </h1>
+            </div>
+            <nav>
+                <div class="absolute top-0 right-0 p-4">
+                    <div class="navbar flex justify-end items-center space-x-4 mr-4">
+                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] 
+                        hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                        (click)="irA('home')">
+                            Home
+                        </button>
+
+                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
+                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                        (click)="irA('about')">
+                            Sobre mí
+                        </button>
+
+                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
+                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                        (click)="irA('login')">
+                            Salir
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </section>
+
+    <section class="pt-10 bg-[#321C3A] md:pt-0 sm:pt-16 2xl:pt-16">
+        <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+            <div class="grid items-center grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="max-w-lg mt-3 text-xl leading-relaxed text-[#DD7AB3] md:mt-8">
+                        Hola! Soy María Emilia Quiroga, estudiante de la Tecnicatura en Programación en la UTN - FRA.
+                        <br>Este es mi proyecto para la materia Laboratorio 4!
+                        Este sitio está desarrollado con Angular, Tailwind y hosteado en Firebase.
+                        <br>Este sitio cuenta con mi juego llamado ######
+                    </p>
+
+                    <p class="mt-4 text-xl text-[#DD7AB3] md:mt-8">
+                        <div class="flex space-x-4"> <!-- Flex y espacio entre botones -->
+                            <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                            shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
+                            hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l">
+                                <a href="https://www.linkedin.com/in/emiliaquiroga/">LinkedIn</a>
+                            </button>
+
+                            <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                            shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
+                            hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l">
+                                <a href="https://www.github.com/emiliaquiroga/">GitHub</a>
+                            </button>
+                        </div>
+                    
+                </div>
+
+                <div class="relative">
+                    <img class="w-100 h-100" src="imagen.jpg" alt="Imagen de presentacion: Maria Emilia">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

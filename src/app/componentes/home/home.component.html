@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="icono.ico">
+</head>
+<body >
+    <section class="bg-[#893161]">
+        <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row ">
+            <div class="flex items-center absolute top-0 left-0 p-4 w-full md:w-auto ">
+                <h1 class="text-2xl font-bold text-black ml-4">
+                    {{ paginaActual }}
+                </h1>
+            </div>
+            <nav>
+                <div class="absolute top-0 right-0 p-4">
+                    <div class="navbar flex justify-end items-center space-x-4 mr-4">
+                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] 
+                        hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                        (click)="irA('home')">
+                            Home
+                        </button>
+
+                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
+                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                        (click)="irA('about')">
+                            Sobre mí
+                        </button>
+
+                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
+                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                        (click)="irA('login')">
+                            Salir
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            
+        </header>
+    </section>
+    <main>
+        <div class="flex flex-wrap justify-center gap-4 p-4">
+            <a href="ahorcado" class="group relative block w-60 sm:w-72 lg:w-80 h-64 sm:h-80 lg:h-96">
+                <span class="absolute inset-0 border-4 border-black border-dashed"></span>
+                <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform 
+                group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
+                    <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                        <svg class="w-10" fill="#C8ACD6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M11.905,246.817H0.27v30.385h11.636v87.014H0.27v30.385h11.636v117.398h142.473V246.817H11.905z M73.56,453.134H43.175 v-30.051H73.56V453.134z M73.56,335.734H43.175v-30.051H73.56V335.734z M123.11,453.134H92.725v-30.051h30.385V453.134z M123.11,335.734H92.725v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M357.621,172.23l-30.385-22.362l-56.043-41.246V84l98.467-36.386L240.806,0v108.623l-56.043,41.246l-30.385,22.362 l-13.786,10.146l13.786,18.204l4.559,6.019l25.826-18.904V512h6.178h130.116h6.178V187.696l25.826,18.903l4.559-6.019 l13.786-18.204L357.621,172.23z M246.417,453.134h-30.385v-30.051h30.385V453.134z M246.417,335.734h-30.385v-30.051h30.385 V335.734z M246.417,218.335h-30.385v-30.051h30.385V218.335z M295.967,453.134h-30.385v-30.051h30.385V453.134z M295.967,335.734 h-30.385v-30.051h30.385V335.734z M295.967,218.335h-30.385v-30.051h30.385V218.335z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M500.094,364.216v-87.014h11.635v-30.385h-11.637H357.621v265.182h142.473V394.601h11.636v-30.385H500.094z M419.274,453.134h-30.385v-30.051h30.385V453.134z M419.274,335.734h-30.385v-30.051h30.385V335.734z M468.824,453.134h-30.385 v-30.051h30.385V453.134z M468.824,335.734h-30.385v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                        </svg>
+
+                        <h2 class="mt-4 text-xl font-medium sm:text-2xl">Ahorcado</h2>
+                    </div>
+
+                    <div class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+                        <h3 class="mt-4 text-xl font-medium sm:text-2xl">Ahorcado</h3>
+                        <p class="mt-4 text-sm sm:text-base">
+                            Adivina las palabras antes de que te cuelguen!
+                        </p>
+                        <p class="mt-8 font-bold">¡Jugar!</p>
+                    </div>
+                </div>
+            </a>
+            <a href="mayor-menor" class="group relative block w-60 sm:w-72 lg:w-80 h-64 sm:h-80 lg:h-96">
+                <span class="absolute inset-0 border-4 border-black border-dashed"></span>
+                <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
+                    <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                        <svg class="w-10" fill="#C8ACD6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M11.905,246.817H0.27v30.385h11.636v87.014H0.27v30.385h11.636v117.398h142.473V246.817H11.905z M73.56,453.134H43.175 v-30.051H73.56V453.134z M73.56,335.734H43.175v-30.051H73.56V335.734z M123.11,453.134H92.725v-30.051h30.385V453.134z M123.11,335.734H92.725v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M357.621,172.23l-30.385-22.362l-56.043-41.246V84l98.467-36.386L240.806,0v108.623l-56.043,41.246l-30.385,22.362 l-13.786,10.146l13.786,18.204l4.559,6.019l25.826-18.904V512h6.178h130.116h6.178V187.696l25.826,18.903l4.559-6.019 l13.786-18.204L357.621,172.23z M246.417,453.134h-30.385v-30.051h30.385V453.134z M246.417,335.734h-30.385v-30.051h30.385 V335.734z M246.417,218.335h-30.385v-30.051h30.385V218.335z M295.967,453.134h-30.385v-30.051h30.385V453.134z M295.967,335.734 h-30.385v-30.051h30.385V335.734z M295.967,218.335h-30.385v-30.051h30.385V218.335z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M500.094,364.216v-87.014h11.635v-30.385h-11.637H357.621v265.182h142.473V394.601h11.636v-30.385H500.094z M419.274,453.134h-30.385v-30.051h30.385V453.134z M419.274,335.734h-30.385v-30.051h30.385V335.734z M468.824,453.134h-30.385 v-30.051h30.385V453.134z M468.824,335.734h-30.385v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                        </svg>
+
+                        <h2 class="mt-4 text-xl font-medium sm:text-2xl">Mayor o menor</h2>
+                    </div>
+
+                    <div class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+                        <h3 class="mt-4 text-xl font-medium sm:text-2xl">Mayor o menor</h3>
+                        <p class="mt-4 text-sm sm:text-base">
+                            Debes adivinar si la carta siguiente es mayor o menor a la que te muestra en pantalla
+                        </p>
+                        <p class="mt-8 font-bold">¡Jugar!</p>
+                    </div>
+                </div>
+            </a>
+            <a href="preguntas" class="group relative block w-60 sm:w-72 lg:w-80 h-64 sm:h-80 lg:h-96">
+                <span class="absolute inset-0 border-4 border-black border-dashed"></span>
+                <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
+                    <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                        <svg class="w-10" fill="#C8ACD6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M11.905,246.817H0.27v30.385h11.636v87.014H0.27v30.385h11.636v117.398h142.473V246.817H11.905z M73.56,453.134H43.175 v-30.051H73.56V453.134z M73.56,335.734H43.175v-30.051H73.56V335.734z M123.11,453.134H92.725v-30.051h30.385V453.134z M123.11,335.734H92.725v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M357.621,172.23l-30.385-22.362l-56.043-41.246V84l98.467-36.386L240.806,0v108.623l-56.043,41.246l-30.385,22.362 l-13.786,10.146l13.786,18.204l4.559,6.019l25.826-18.904V512h6.178h130.116h6.178V187.696l25.826,18.903l4.559-6.019 l13.786-18.204L357.621,172.23z M246.417,453.134h-30.385v-30.051h30.385V453.134z M246.417,335.734h-30.385v-30.051h30.385 V335.734z M246.417,218.335h-30.385v-30.051h30.385V218.335z M295.967,453.134h-30.385v-30.051h30.385V453.134z M295.967,335.734 h-30.385v-30.051h30.385V335.734z M295.967,218.335h-30.385v-30.051h30.385V218.335z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M500.094,364.216v-87.014h11.635v-30.385h-11.637H357.621v265.182h142.473V394.601h11.636v-30.385H500.094z M419.274,453.134h-30.385v-30.051h30.385V453.134z M419.274,335.734h-30.385v-30.051h30.385V335.734z M468.824,453.134h-30.385 v-30.051h30.385V453.134z M468.824,335.734h-30.385v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                        </svg>
+
+                        <h2 class="mt-4 text-xl font-medium sm:text-2xl">Preguntados</h2>
+                    </div>
+
+                    <div class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+                        <h3 class="mt-4 text-xl font-medium sm:text-2xl">Preguntados</h3>
+                        <p class="mt-4 text-sm sm:text-base">
+                            Desafía tu conocimiento y responde la mayor cantidad de preguntas!
+                        </p>
+                        <p class="mt-8 font-bold">¡Jugar!</p>
+                    </div>
+                </div>
+            </a>
+            <a href="juego-propio" class="group relative block w-60 sm:w-72 lg:w-80 h-64 sm:h-80 lg:h-96">
+                <span class="absolute inset-0 border-4 border-black border-dashed"></span>
+                <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
+                    <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                        <svg class="w-10" fill="#C8ACD6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M11.905,246.817H0.27v30.385h11.636v87.014H0.27v30.385h11.636v117.398h142.473V246.817H11.905z M73.56,453.134H43.175 v-30.051H73.56V453.134z M73.56,335.734H43.175v-30.051H73.56V335.734z M123.11,453.134H92.725v-30.051h30.385V453.134z M123.11,335.734H92.725v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M357.621,172.23l-30.385-22.362l-56.043-41.246V84l98.467-36.386L240.806,0v108.623l-56.043,41.246l-30.385,22.362 l-13.786,10.146l13.786,18.204l4.559,6.019l25.826-18.904V512h6.178h130.116h6.178V187.696l25.826,18.903l4.559-6.019 l13.786-18.204L357.621,172.23z M246.417,453.134h-30.385v-30.051h30.385V453.134z M246.417,335.734h-30.385v-30.051h30.385 V335.734z M246.417,218.335h-30.385v-30.051h30.385V218.335z M295.967,453.134h-30.385v-30.051h30.385V453.134z M295.967,335.734 h-30.385v-30.051h30.385V335.734z M295.967,218.335h-30.385v-30.051h30.385V218.335z"></path>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M500.094,364.216v-87.014h11.635v-30.385h-11.637H357.621v265.182h142.473V394.601h11.636v-30.385H500.094z M419.274,453.134h-30.385v-30.051h30.385V453.134z M419.274,335.734h-30.385v-30.051h30.385V335.734z M468.824,453.134h-30.385 v-30.051h30.385V453.134z M468.824,335.734h-30.385v-30.051h30.385V335.734z"></path>
+                                </g>
+                            </g>
+                        </svg>
+
+                        <h2 class="mt-4 text-xl font-medium sm:text-2xl">Juego propio</h2>
+                    </div>
+
+                    <div class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+                        <h3 class="mt-4 text-xl font-medium sm:text-2xl">Juego propio</h3>
+                        <p class="mt-4 text-sm sm:text-base">
+                            Juego que estoy craneando (creo que va a ser una vivorita)
+                        </p>
+                        <p class="mt-8 font-bold">¡Jugar!</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

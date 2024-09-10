@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-preguntas',
   standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './preguntas.component.html',
+  styleUrl: './preguntas.component.css'
 })
-export class AppComponent {
-  title = 'Sala de juegos';
-
+export class PreguntasComponent {
+  paginaActual = "Preguntados";
   constructor(private router:Router){
 
   }
@@ -18,5 +17,4 @@ export class AppComponent {
   irA(path: string){
     this.router.navigate([path]);
   }
-
 }
