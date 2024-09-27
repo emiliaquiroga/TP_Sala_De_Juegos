@@ -1,11 +1,17 @@
 import { provideExperimentalZonelessChangeDetection } from "@angular/core";
 
 export class Usuario {
-    usuario: string;
+    email: string;
     clave: string;
+    
 
     constructor() {
-        this.usuario = "admin";
+        this.email = "email@admin.com";
         this.clave = "admin123";
+        
     }
 }
+
+// COMANDOS !!!
+//ng build
+//firebase deploy

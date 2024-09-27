@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Usuario } from '../../clases/Usuario';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { addDoc, Firestore, collection, collectionData,setDoc, DocumentData, doc } from '@angular/fire/firestore';
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,11 +15,12 @@ import Swal from 'sweetalert2';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  usuario: string = '';
+  email: string = '';
   clave: string = '';
-  loginExitoso: boolean = false;
+  public loginExitoso: boolean = false;
+  public coleccionLogin:any[] = [];
 
-  constructor(private router:Router){
+  constructor(private router:Router, public auth: Auth, private firestore: Firestore){
 
   }
   irA(path: string){
@@ -26,17 +29,16 @@ export class LoginComponent {
 
   usuarioObjeto: Usuario = new Usuario(); 
 
-  validar() {
-
-    if (this.usuario === this.usuarioObjeto.usuario && this.clave === this.usuarioObjeto.clave) {
-      this.loginExitoso = true;
-      this.irA('home');
-      console.log("¡Sesión iniciada exitosamente!");
-    } else {
-      this.loginExitoso = false;
-      this.error();
-      console.log("Credenciales incorrectas.");
-    }
+  validar(){
+      signInWithEmailAndPassword(this.auth, this.email, this.clave).then((res) => {
+        this.loginExitoso = true;
+        Swal.fire("Bienvenido!");
+        this.confirmacion();
+      }).catch((e) => {
+        this.loginExitoso = false;
+        this.error();
+        console.log(e)})
+    
   }
 
   error(){
@@ -47,4 +49,19 @@ export class LoginComponent {
       confirmButtonText: 'Aceptar'
     })
   }
+
+  confirmacion(){
+    this.irA('home');
+  }
+
+  registroLogins() {
+    let col = collection(this.firestore, 'logins');
+    addDoc(col, { fecha: new Date(), "usuario": this.email})
+  }
+
+  autocompletar(){
+    this.email = "emi@gmail.com";
+    this.clave = "emi123"
+  }
 }
+

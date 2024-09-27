@@ -31,16 +31,21 @@
                             Sobre mí
                         </button>
 
-                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
                         shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
                         hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="irA('login')">
-                            Salir
+                        (click)="cerrarSesion()">
+                            Cerrar sesión
+                        </button>
+                        <button  *ngIf="!auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                            shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
+                            hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                            (click)="irA('login')">
+                                Iniciar sesión
                         </button>
                     </div>
                 </div>
             </nav>
-            
         </header>
     </section>
     <div class="flex items-center justify-center h-[calc(100vh-200px)]">
@@ -49,11 +54,14 @@
                 <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
                     <div class="p-4 !pt-0 sm:p-6 lg:p-8">
                         <h2 class="mt-4 text-m font-medium sm:text-2xl">SITIO EN CONSTRUCCIÓN</h2>
-                        <p class="mt-4 text-m font-medium sm:text-m">todo a su debido tiempo</p>
+                        <p class="mt-4 text-m font-medium sm:text-m">No me presiones katie, aun no estoy listo</p>
                     </div>
                 </div>
             </span>
         </div>
     </div>
+
+    
+        
 </body>
 </html>
