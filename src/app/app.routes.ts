@@ -20,6 +20,7 @@ export const routes: Routes = [
     { path: 'registrar', component: RegistroComponent },
 
     // La ruta comodin debe ir siempre al final
-    { path: '**', component:  PageNotFoundComponent},
-
+    { path: '**', component:  PageNotFoundComponent,
+    loadChildren: () => import('./modules/juegos/juegos.module').then(m => m.JuegosModule)
+    }
 ];

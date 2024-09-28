@@ -6,8 +6,6 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-ahorcado',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './ahorcado.component.html',
   styleUrl: './ahorcado.component.css'
 })

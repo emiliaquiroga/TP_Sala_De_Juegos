@@ -6,8 +6,6 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-preguntas',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './preguntas.component.html',
   styleUrl: './preguntas.component.css'
 })

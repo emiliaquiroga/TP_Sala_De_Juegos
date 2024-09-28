@@ -6,8 +6,6 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-mayor-menor',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './mayor-menor.component.html',
   styleUrl: './mayor-menor.component.css'
 })
