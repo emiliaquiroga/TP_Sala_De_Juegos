@@ -3,6 +3,9 @@ import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { EventEmitter, Input, Output } from '@angular/core';
+import { CartasService } from '../../../../services/cartas.service';
+
 
 @Component({
   selector: 'app-mayor-menor',
@@ -11,8 +14,37 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 })
 export class MayorMenorComponent {
   paginaActual = "Mayor o menor";
-  constructor(private router:Router, public auth: Auth){
+  cartaSeleccionadaId: any;
+  cartaActual: any;
+  cartaSiguiente: any;
 
+  constructor(private router:Router, public auth: Auth, private cartasService: CartasService){
+  }
+
+  @Input() cartas!:any[];
+  @Output() mostrarCarta = new EventEmitter<any>();
+  
+
+  mostrar(carta:any, index:number){
+    this.cartaSeleccionadaId = index;
+    this.mostrarCarta.emit(carta);
+  }
+
+  inicioJuego(){
+    this.cartasService.getCartas().subscribe((data)=>{
+      this.cartaSeleccionadaId = data.deck_id;
+    });
+  }
+
+  sacarCarta(){
+    this.cartasService.dibujarCarta(this.cartaSeleccionadaId).subscribe((data)=>{
+      if(data.cards && data.cards.lenght > 0){
+        this.cartaActual = data.cards[0];
+      }else{
+        console.log("Hubo un error al momento de sacar una carta del mazo!");
+      }
+    }
+    )
   }
 
   irA(path: string){

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" type="image/x-icon" href="icono.ico">
+    <title>Chat</title>
 </head>
-<body>
+
+<body class="bg-cover bg-center bg-fixed dark: bg-[#321C3A]">
     <section class="bg-[#893161]">
-        <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row ">
-            <div class="flex items-center absolute top-0 left-0 p-4 w-full md:w-auto ">
+        <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row">
+            <div class="flex items-center absolute top-0 left-0 p-4 w-full md:w-auto">
                 <h1 class="text-2xl font-bold text-black ml-4">
                     {{ paginaActual }}
                 </h1>
@@ -30,42 +30,60 @@
                         (click)="irA('about')">
                             Sobre mí
                         </button>
-                        <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
                         shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
                         hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
                         (click)="irA('chat')">
                             Chat
                         </button>
 
-                        <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
-                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="cerrarSesion()">
-                            Cerrar sesión
-                        </button>
-                        <button  *ngIf="!auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                        @if(auth.currentUser?.email){
+                            <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                            shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
+                            hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                            (click)="cerrarSesion()">
+                                Cerrar sesión
+                            </button>
+                        }@else {
+                            <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
                             shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
                             hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
                             (click)="irA('login')">
                                 Iniciar sesión
-                        </button>
+                            </button>
+                        }
                     </div>
                 </div>
             </nav>
-            
         </header>
     </section>
-    <div class="flex items-center justify-center h-[calc(100vh-200px)]">
-        <div class="group relative block w-60 sm:w-72 lg:w-80 h-64 sm:h-80 lg:h-96">
-            <span class="absolute inset-0 border-4 border-black border-dashed">
-                <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
-                    <div class="p-4 !pt-0 sm:p-6 lg:p-8">
-                        <h2 class="mt-4 text-m font-medium sm:text-2xl">SITIO EN CONSTRUCCIÓN</h2>
-                        <p class="mt-4 text-m font-medium sm:text-m">todo a su debido tiempo</p>
-                    </div>
+
+<div class="group relative w-full h-full max-w-lg mx-auto my-8">
+    <span class="absolute inset-0 border-4 border-black border-dashed"></span>
+    <div class="relative flex h-full w-full transform items-center justify-center border-4 border-black 
+    bg-[#C8ACD6] scale-105 shadow-[0_0_15px_0_rgba(0,0,0,1)]">
+        <div class="w-full h-96 overflow-y-auto">
+            <div class="space-y-4 p-4 sm:p-6 lg:p-8">
+                <div class="bg-white p-3 rounded-lg shadow-md" *ngFor="let msg of loginsCollection">
+                    <p><strong>{{ msg.usuario }}</strong> ({{ msg.fecha | date:'short' }}): {{ msg.contenido }}</p>
                 </div>
-            </span>
+            </div>
         </div>
     </div>
+</div>
+
+    
+    <div class="w-full max-w-lg mx-auto mt-4 flex">
+        <input 
+            type="text" 
+            [(ngModel)]="mensaje" 
+            class="flex-grow p-2 border-4 border-black rounded-none" 
+            placeholder="Escribe un mensaje..."/>
+        <button (click)="Mensaje()" class="ml-4 p-2 border-4 border-black bg-[#C8ACD6] text-black shadow-[0_0_7px_0_rgba(0,0,0,1)] 
+            hover:scale-105 transform transition">
+            Enviar
+        </button>
+    </div>
+    
 </body>
 </html>

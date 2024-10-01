@@ -7,6 +7,7 @@ import { AhorcadoComponent } from './modules/juegos/componentes/ahorcado/ahorcad
 import { PreguntasComponent } from './modules/juegos/componentes/preguntas/preguntas.component';
 import { MayorMenorComponent } from './modules/juegos/componentes/mayor-menor/mayor-menor.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { ChatComponent } from './componentes/chat/chat.component';
 
 export const routes: Routes = [
 
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'preguntas', component: PreguntasComponent },
     { path: 'mayor-menor', component: MayorMenorComponent },
     { path: 'registrar', component: RegistroComponent },
+    { path: 'chat', component: ChatComponent},
 
     // La ruta comodin debe ir siempre al final
     { path: '**', component:  PageNotFoundComponent,
