@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { PaginaActualService } from '../../services/pagina-actual.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -9,12 +10,10 @@ import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from
   styleUrl: './page-not-found.component.css'
 })
 export class PageNotFoundComponent {
-  paginaActual = "Pagina no encontrada!";
-  constructor(private router:Router){
 
+  constructor(private router:Router,private paginaActualService: PaginaActualService){}
+  ngOnInit():void{
+    this.paginaActualService.actualizarTitulo('Pagina no encontrada!');
   }
 
-  irA(path: string){
-    this.router.navigate([path]);
-  }
 }

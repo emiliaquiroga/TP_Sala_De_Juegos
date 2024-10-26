@@ -6,6 +6,7 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import Swal from 'sweetalert2';
 import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { PaginaActualService } from '../../services/pagina-actual.service';
 
 @Component({
   selector: 'app-chat',
@@ -15,15 +16,21 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   styleUrl: './chat.component.css'
 })
 export class ChatComponent {
-  paginaActual = "Chat";
   public loginsCollection:any[] = [];
   public user: string = "";
   private sub!:Subscription;
   public mensaje: string = "";
 
-  constructor(private router:Router,  public auth: Auth, private firestore: Firestore){
+  constructor(private router:Router,  
+    public auth: Auth, 
+    private firestore: Firestore, 
+    private paginaActualService: PaginaActualService){
     this.GetData();
     this.setUser();
+  }
+
+  ngOnInit(): void{
+    this.paginaActualService.actualizarTitulo('Chat');
   }
 
   setUser() {
@@ -61,9 +68,6 @@ export class ChatComponent {
       console.log(respuesta);
     });
   }
-  irA(path: string){
-    this.router.navigate([path]);
-  }
 
   ngOnDestroy() {
     if (this.sub) {
@@ -71,23 +75,8 @@ export class ChatComponent {
     }
   }
 
-  cerrarSesion() {
-    Swal.fire({
-      title: '¿Estás seguro de que quieres cerrar sesión?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, cerrar sesión',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        signOut(this.auth).then(() => {
-          Swal.fire('Cerrado', 'Tu sesión ha sido cerrada.', 'success');
-          this.irA('login'); 
-        }).catch((error) => {
-          Swal.fire('Error', 'No se pudo cerrar sesión. Intenta de nuevo.', 'error');
-        });
-      }
-    });
+  irA(path: string){
+    this.router.navigate([path]);
   }
 
   cartelLoginRegistro(){

@@ -1,5 +1,6 @@
+
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
@@ -7,9 +8,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartasService {
+  http = inject(HttpClient);
   private conexion = 'https://deckofcardsapi.com/api/deck'
 
-  constructor(private http: HttpClient) { 
+  constructor() { 
     
   }
 

@@ -1,65 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" type="image/x-icon" href="icono.ico">
-</head>
-<body>
-    <section class="bg-[#893161]">
-        <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row ">
-            <div class="flex items-center absolute top-0 left-0 p-4 w-full md:w-auto ">
-                <h1 class="text-2xl font-bold text-black ml-4">
-                    {{ paginaActual }}
-                </h1>
-            </div>
-            <nav>
-                <div class="absolute top-0 right-0 p-4">
-                    <div class="navbar flex justify-end items-center space-x-4 mr-4">
-                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] 
-                        hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="irA('home')">
-                            Home
-                        </button>
 
-                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
-                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="irA('about')">
-                            Sobre mí
-                        </button>
-
-                        <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
-                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="irA('chat')">
-                            Chat
-                        </button>
-
-                        <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
-                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="cerrarSesion()">
-                            Cerrar sesión
-                        </button>
-                        <button  *ngIf="!auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                            shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
-                            hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                            (click)="irA('login')">
-                                Iniciar sesión
-                        </button>
+            <div class="container text-center">
+                <div class="row justify-content-center mt-5">
+                  <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-header titulo-personalizado text-white" id = titulo>
+                        <h3 class="titulo-custom">Juego Mayor o Menor</h3>
+                      </div>
+                      <div class="card-body">
+                        <div class="card-title">
+                          <p *ngIf="!finalJuego" class="lead">Adivina si la siguiente carta es mayor, menor o igual</p>
+                          <p *ngIf="finalJuego" class="lead text-danger">¡Perdiste!</p>
+                        </div>
+              
+                        <div class="mb-4">
+                          <!-- Mostrar la carta actual -->
+                          <img *ngIf="actualCarta" [src]="actualCarta.image" alt="Carta actual" class="img-fluid carta-img">
+                        </div>
+              
+                        <div class="mb-3">
+                          <p *ngIf="!finalJuego">Puntaje actual: <strong>{{ puntaje }}</strong></p>
+                          <p *ngIf="finalJuego">Puntaje final: <strong>{{ puntajeFinal }}</strong></p>
+                        </div>
+              
+                        <!-- Botones para elegir Mayor, Menor o Igual -->
+                        <div *ngIf="!finalJuego">
+                          <button class="btn btn-custom-mayor me-2" (click)="robarCarta('mayor')">Mayor</button>
+                          <button class="btn btn-custom-menor me-2" (click)="robarCarta('menor')">Menor</button>
+                          <button class="btn btn-custom-igual" (click)="robarCarta('igual')">Igual</button>
+                        </div>
+              
+                        <!-- Botón para reiniciar el juego -->
+                        <div *ngIf="finalJuego">
+                          <button class="btn btn-custom-reiniciar" (click)="iniciarJuego()">Reiniciar Juego</button>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </nav>
-        </header>
-    </section>
-    <div class="flex items-center justify-center h-[calc(100vh-200px)]">
-
-    </div>
-
-    
-        
-</body>
-</html>
+              </div>

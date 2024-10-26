@@ -1,76 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" type="image/x-icon" href="icono.ico">
-</head>
-<body>
-    <section class="bg-[#893161]">
-        <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row ">
-            <div class="flex items-center absolute top-0 left-0 p-4 w-full md:w-auto ">
-                <h1 class="text-2xl font-bold text-black ml-4">
-                    {{ paginaActual }}
-                </h1>
-            </div>
-            <nav>
-                <div class="absolute top-0 right-0 p-4">
-                    <div class="navbar flex justify-end items-center space-x-4 mr-4">
-                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] 
-                        hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="irA('home')">
-                            Home
-                        </button>
+<div class="flex items-center justify-center h-[calc(100vh-200px)]">
+<div class="flex flex-row w-full max-w-6xl">
+    <div class="flex-shrink-0 border-4 border-black bg-white p-4 rounded-lg shadow-lg">
+    <h2 class="text-xl font-bold text-center mb-4">Ahorcado</h2>
+    <div class="flex items-center justify-center h-48">
+        <svg class="w-32 h-32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Dibuja el ahorcado -->
+        <circle *ngIf="errores > 0" cx="32" cy="16" r="8" stroke="pink" stroke-width="2" fill="none" />
+        <line *ngIf="errores > 1" x1="32" y1="24" x2="32" y2="48" stroke="pink" stroke-width="2" />
+        <line *ngIf="errores > 2" x1="32" y1="32" x2="20" y2="40" stroke="pink" stroke-width="2" />
+        <line *ngIf="errores > 3" x1="32" y1="32" x2="44" y2="40" stroke="pink" stroke-width="2" />
+        <line *ngIf="errores > 4" x1="32" y1="48" x2="20" y2="56" stroke="pink" stroke-width="2" />
+        <line *ngIf="errores > 5" x1="32" y1="48" x2="44" y2="56" stroke="pink" stroke-width="2" />
+        </svg>
+    </div>
+    <p class="text-center mt-4">Puntos: {{ puntos }}</p>
+    </div>
 
-                        <button class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
-                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="irA('about')">
-                            Sobre mí
-                        </button>
-                        
-                        <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
-                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="irA('chat')">
-                            Chat
-                        </button>
-
-                        <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                        shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
-                        hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                        (click)="cerrarSesion()">
-                            Cerrar sesión
-                        </button>
-                        <button  *ngIf="!auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
-                            shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]
-                            hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
-                            (click)="irA('login')">
-                                Iniciar sesión
-                        </button>
-                    </div>
-                </div>
-            </nav>
-            
-        </header>
-    </section>
-    <main>
-        <div class="flex items-center justify-center h-[calc(100vh-200px)]">
-            <div class="group relative block w-60 sm:w-72 lg:w-80 h-64 sm:h-80 lg:h-96">
-                <span class="absolute inset-0 border-4 border-black border-dashed">
-                    <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
-                        <div class="p-4 !pt-0 sm:p-6 lg:p-8">
-                            <h2 class="mt-4 text-m font-medium sm:text-2xl">SITIO EN CONSTRUCCIÓN</h2>
-                            <p class="mt-4 text-m font-medium sm:text-m">La paciencia es un arte</p>
-                        </div>
-                    </div>
-                </span>
-            </div>
-        </div>
-
-        <!--https://freecodez.com/post/7jypdpp  teclado-->
-    </main>
-</body>
-</html>
+    <!-- Palabra a adivinar y letras -->
+    <div class="flex-grow border-4 border-black bg-white p-4 rounded-lg shadow-lg ml-4">
+    <h2 class="text-xl font-bold text-center mb-4">Palabra a Adivinar</h2>
+    <div class="flex items-center justify-center h-20 text-2xl">
+        <span *ngFor="let letra of guiones.split('')">{{ letra }}&nbsp;</span>
+    </div>
+    
+    <!-- teclado -->
+    <div class="grid grid-cols-8 gap-2 mt-4">
+        <button
+            *ngFor="let letra of abecedario"
+            (click)="adivinar(letra)"
+            [disabled]="letrasUsadas.includes(letra)"
+            class="bg-[#FEBAED] border-4 border-black px-4 py-2 font-bold text-black shadow-[5px_5px_0_rgba(0,0,0,1)] 
+                transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px] 
+                hover:shadow-[10px_10px_0_-2px_#e9b50b,10px_10px_0_0_#000] flex justify-center items-center text-lg">
+            {{ letra }}
+        </button>
+    </div>
+    </div>
+</div>
+</div>
