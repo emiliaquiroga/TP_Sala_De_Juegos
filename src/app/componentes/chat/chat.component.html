@@ -1,29 +1,41 @@
-
-
 <div class="group relative w-full h-full max-w-lg mx-auto my-8">
     <span class="absolute inset-0 border-4 border-black border-dashed"></span>
     <div class="relative flex h-full w-full transform items-center justify-center border-4 border-black 
-    bg-[#C8ACD6] scale-105 shadow-[0_0_15px_0_rgba(0,0,0,1)]">
-        <div class="w-full h-96 overflow-y-auto">
+        bg-[#C8ACD6] scale-105 shadow-[0_0_15px_0_rgba(0,0,0,1)]">
+        <div *ngIf="cargando" class="text-center p-4">Cargando mensajes...</div>
+
+        <div class="w-full h-96 overflow-y-auto"> 
             <div class="space-y-4 p-4 sm:p-6 lg:p-8">
-                <div class="bg-white p-3 rounded-lg shadow-md" *ngFor="let msg of loginsCollection">
-                    <p><strong>{{ msg.usuario }}</strong> ({{ msg.fecha | date:'short' }}): {{ msg.contenido }}</p>
+                <div
+                    *ngFor="let msg of mensajesCollection"
+                    [ngClass]="{
+                        'text-right ml-auto': msg.usuario === user,
+                        'text-left mr-auto': msg.usuario !== user
+                    }"
+                    class="bg-white p-3 rounded-lg shadow-md max-w-xs"
+                >
+
+                    <p>
+                        <strong>{{ msg.usuario }}</strong>
+                        <span>({{ msg.fecha | date: 'short' }})</span>
+                    </p>
+                    <p>{{ msg.contenido }}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-    
-    <div class="w-full max-w-lg mx-auto mt-4 flex">
-        <input 
-            type="text" 
-            [(ngModel)]="mensaje" 
-            class="flex-grow p-2 border-4 border-black rounded-none" 
-            placeholder="Escribe un mensaje..."/>
-        <button (click)="Mensaje()" class="ml-4 p-2 border-4 border-black bg-[#C8ACD6] text-black shadow-[0_0_7px_0_rgba(0,0,0,1)] 
-            hover:scale-105 transform transition">
-            Enviar
-        </button>
-    </div>
-    
+<div class="w-full max-w-lg mx-auto mt-4 flex">
+    <input 
+        type="text" 
+        [(ngModel)]="mensaje" 
+        class="flex-grow p-2 border-4 border-black rounded-none" 
+        placeholder="Escribe un mensaje..."/>
+    <button (click)="Mensaje()" 
+        class="ml-4 p-2 border-4 border-black bg-[#C8ACD6] text-black shadow-[0_0_7px_0_rgba(0,0,0,1)] 
+        hover:scale-105 transform transition">
+        Enviar
+    </button>
+</div>
+
