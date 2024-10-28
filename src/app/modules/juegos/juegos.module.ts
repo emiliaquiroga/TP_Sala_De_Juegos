@@ -19,8 +19,7 @@ import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
     RouterOutlet, 
     RouterLink, 
     RouterLinkActive,
-    RouterModule
-    
+    RouterModule, 
   ],
   providers: [CartasService,  provideHttpClient() ],
 })

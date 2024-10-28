@@ -5,7 +5,7 @@ import { Auth, signOut } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PaginaActualService } from '../../../../services/pagina-actual.service';
-
+import { PuntajeService } from '../../../../services/puntaje.service';
 @Component({
   selector: 'app-mayor-menor',
   templateUrl: './mayor-menor.component.html',
@@ -16,6 +16,7 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
   actualCarta: any;
   anteriorCarta: any;
   actualMazo: any;
+  vida : number = 3;
   idMazo: string = '';
   sub!: Subscription;
   puntaje: number = 0;
@@ -25,7 +26,8 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
   constructor(private router: Router, 
     public auth: Auth, 
     private cartasService: CartasService,
-    private paginaActualService: PaginaActualService
+    private paginaActualService: PaginaActualService, 
+    private puntajeService : PuntajeService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
 
   iniciarJuego() {
     this.finalJuego = false;
+    this.vida =3;
     this.sub = this.cartasService.getCartas().subscribe((mazoMezclado) => {
       this.actualMazo = mazoMezclado;
       this.idMazo = this.actualMazo.deck_id;
@@ -53,7 +56,6 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
     });
   }
 
-  // Método para robar la primera carta del mazo
   robarCartaInicial() {
     this.sub = this.cartasService.dibujarCarta(this.idMazo).subscribe((mazo) => {
       this.actualMazo = mazo;
@@ -68,7 +70,6 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
 
   robarCarta(eleccionMayorMenor: string) {
     this.anteriorCarta = this.actualCarta;
-
     this.sub = this.cartasService.dibujarCarta(this.idMazo).subscribe((mazo) => {
       this.actualMazo = mazo;
       if (this.actualMazo.cards && this.actualMazo.cards.length > 0) {
@@ -89,7 +90,11 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
     if (apuestaCorrecta) {
       this.puntaje++;
     } else {
-      this.finJuego();
+      this.vida -=1;
+      if(this.vida <= 0){
+        
+        this.finJuego();
+      }
     }
   }
 
@@ -106,13 +111,34 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
     }
   }
 
-  finJuego() {
+  finJuego():void {
     this.puntajeFinal = this.puntaje;
-    this.puntaje = 0;
+    this.registrarPuntos(this.puntajeFinal, 'Mayor o Menor');
     this.finalJuego = true;
-    if (this.sub) {
-      this.sub.unsubscribe();
-    }
+    Swal.fire({
+      title: 'Juego terminado',
+      text: `Puntos obtenidos: ${this.puntajeFinal}. ¡Gracias por jugar!`,
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Jugar de nuevo',
+      cancelButtonText: 'Salir',
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reiniciarJuego();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        this.irA('home');
+      }
+    });
+  }
+
+  irA(path: string){
+    this.router.navigate([path]);
+  }
+
+  reiniciarJuego(): void {
+    this.puntaje = 0;
+    this.iniciarJuego();
   }
 
   obtenerValorNum(valorCarta: string): number {
@@ -124,25 +150,14 @@ export class MayorMenorComponent implements OnInit, OnDestroy {
     };
     return valores[valorCarta] || parseInt(valorCarta);
   }
-  irA(path: string){
-    this.router.navigate([path]);
+
+  async registrarPuntos(puntaje: number, juego: string) {
+    try {
+      await this.puntajeService.guardarPuntaje(puntaje, juego);
+      console.log('Puntaje guardado exitosamente');
+    } catch (error) {
+      console.error('Error al guardar el puntaje: ', error);
+    }
   }
-  cerrarSesion() {
-    Swal.fire({
-      title: '¿Estás seguro de que quieres cerrar sesión?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, cerrar sesión',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        signOut(this.auth).then(() => {
-          Swal.fire('Cerrado', 'Tu sesión ha sido cerrada.', 'success');
-          this.router.navigate(['login']);
-        }).catch((error) => {
-          Swal.fire('Error', 'No se pudo cerrar sesión. Intenta de nuevo.', 'error');
-        });
-      }
-    });
-  }
+
 }
