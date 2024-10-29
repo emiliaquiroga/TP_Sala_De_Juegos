@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
-    <link rel="icon" type="image/x-icon" href="icono.ico">
-</head>
-<body class="bg-cover bg-center bg-fixed dark:bg-[#321C3A]">
+
+<div class="bg-cover bg-center bg-fixed dark:bg-[#321C3A]">
 <div class="relative">
     <div class="absolute top-0 right-0 bg-[#C8ACD6] p-4 flex justify-start items-center gap-4 border-4 border-black max-w-[300px] 
 mr-2 mt-2 transition-all duration-400 transform-style-3d transform rotate-x-[10deg] rotate-y-[-10deg] perspective-[1000px] ">
@@ -61,35 +54,32 @@ mr-2 mt-2 transition-all duration-400 transform-style-3d transform rotate-x-[10d
                 </div>
                 <br>
                 
-                <div class="relative bg-[#C8ACD6] p-5 flex justify-start items-center gap-4 border-4 border-black max-w-[350px] 
+                <div class="relative bg-[#C8ACD6] p-4 flex justify-start items-center gap-2 border-4 border-black max-w-[300px] 
                 transition-all duration-400 transform-style-3d transform rotate-x-[10deg] rotate-y-[-10deg] perspective-[1000px] 
                 shadow-[10px_10px_0px_#000] hover:rotate-x-[5deg] hover:rotate-y-[1deg] hover:scale-105 
-                hover:shadow-[25px_25px_0_-5px_#e9b50b,25px_25px_0_0_#000]">
-                    <div class="absolute w-full h-full left-0 bottom-0 z-[-1] translate-z-[-50px] 
-                    bg-gradient-to-br from-[rgba(255,107,107,0.4)] to-[rgba(255,107,107,0.1)] blur-lg"></div>
-                    <button class="cursor-pointer w-full h-full border-3 border-black bg-[#e9b50b] transition-all duration-400 
-                    flex justify-center items-center py-3 text-center text-xl translate-z-[20px] relative z-3 font-bold uppercase 
-                    hover:bg-[#e9b50b] hover:translate-z-[10px] hover:-translate-x-[5px] hover:-translate-y-[5px] hover:shadow-[5px_5px_0_0_#000]"
-                    (click)="validar()">
-                        INGRESAR
-                    </button>
-                </div>
-                <div class="relative bg-[#C8ACD6] p-5 flex justify-start items-center gap-4 border-4 border-black max-w-[350px] 
-                transition-all duration-400 transform-style-3d transform rotate-x-[10deg] rotate-y-[-10deg] perspective-[1000px] 
-                shadow-[10px_10px_0px_#000] hover:rotate-x-[5deg] hover:rotate-y-[1deg] hover:scale-105 
-                hover:shadow-[25px_25px_0_-5px_#e9b50b,25px_25px_0_0_#000]">
-                    <div class="absolute w-full h-full left-0 bottom-0 z-[-1] translate-z-[-50px] 
-                    bg-gradient-to-br from-[rgba(255,107,107,0.4)] to-[rgba(255,107,107,0.1)] blur-lg"></div>
-                    <button class="cursor-pointer w-full h-full border-3 border-black bg-[#e9b50b] transition-all duration-400 
-                    flex justify-center items-center py-3 text-center text-xl translate-z-[20px] relative z-3 font-bold uppercase 
-                    hover:bg-[#e9b50b] hover:translate-z-[10px] hover:-translate-x-[5px] hover:-translate-y-[5px] hover:shadow-[5px_5px_0_0_#000]"
+                hover:shadow-[20px_20px_0_-5px_#e9b50b,20px_20px_0_0_#000] my-2">
+                <button class="cursor-pointer w-full h-10 border-2 border-black bg-[#e9b50b] transition-all duration-400 
+                        flex justify-center items-center text-lg translate-z-[20px] relative z-3 font-bold uppercase 
+                        hover:bg-[#e9b50b] hover:translate-z-[10px] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[3px_3px_0_0_#000]"
+                        (click)="validar()">
+                INGRESAR
+                </button>
+            </div>
+
+            <div class="relative bg-[#C8ACD6] p-4 flex justify-start items-center gap-2 border-4 border-black max-w-[300px] 
+            transition-all duration-400 transform-style-3d transform rotate-x-[10deg] rotate-y-[-10deg] perspective-[1000px] 
+            shadow-[10px_10px_0px_#000] hover:rotate-x-[5deg] hover:rotate-y-[1deg] hover:scale-105 
+            hover:shadow-[20px_20px_0_-5px_#e9b50b,20px_20px_0_0_#000] my-2">
+            <button class="cursor-pointer w-full h-10 border-2 border-black bg-[#e9b50b] transition-all duration-400 
+                    flex justify-center items-center text-lg translate-z-[20px] relative z-3 font-bold uppercase 
+                    hover:bg-[#e9b50b] hover:translate-z-[10px] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[3px_3px_0_0_#000]"
                     (click)="autocompletar()">
-                        AUTOCOMPLETAR
-                    </button>
-                </div>
+            AUTOCOMPLETAR
+            </button>
+        </div>
             </form>
         </div>
     </div>
 </div>
-</body>
-</html>
+</div>
+

@@ -28,6 +28,26 @@
                     (click)="irA('chat')">
                         Chat
                     </button>
+                    <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                    shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
+                    hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                    (click)="irA('puntuaciones')">
+                        Puntuaciones
+                    </button>
+                    
+                    <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                    shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
+                    hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                    (click)="irA('encuesta')">
+                        Encuesta
+                    </button>
+                    <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
+                    shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-2px] hover:translate-y-[-5px]
+                    hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] flex justify-center items-center text-l"
+                    (click)="irA('resultados-encuesta')">
+                        Resultado Encuestas
+                    </button>
+
 
                     <button *ngIf="auth.currentUser?.email" class="navbar-button bg-[#FEBAED] border-4 border-black px-6 py-3 font-bold text-black
                     shadow-[5px_5px_0_rgba(0,0,0,1)] transition-all duration-400 transform hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]

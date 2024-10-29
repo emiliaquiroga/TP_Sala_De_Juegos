@@ -12,7 +12,6 @@ import { PuntajeService } from '../../../../services/puntaje.service';
   styleUrl: './mayor-menor.component.css'
 })
 export class MayorMenorComponent implements OnInit, OnDestroy {
-  paginaActual:string = "Mayor o Menor"
   actualCarta: any;
   anteriorCarta: any;
   actualMazo: any;

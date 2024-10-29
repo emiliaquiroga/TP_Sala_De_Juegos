@@ -16,6 +16,7 @@ export class AhorcadoComponent {
   palabraActual : string = "";
   guiones : string = "";
   letrasUsadas: string[] =[];
+  palabrasUtilizadas: string[] = [];
   errores: number = 0;
   maxErrores: number = 6;
   puntos: number = 0;
@@ -37,6 +38,7 @@ export class AhorcadoComponent {
     this.letrasUsadas = [];
     this.banderaFinal = false;
     this.errores = 0; 
+    this.palabrasUtilizadas = [];
   }
 
   adivinar(letra: string): void {
@@ -83,7 +85,14 @@ export class AhorcadoComponent {
   }
   
   nuevaPalabra(): void {
-    this.palabraActual = palabras[Math.floor(Math.random() * palabras.length)].toLowerCase();
+    const palabrasDisponibles = palabras.filter(palabra => !this.palabrasUtilizadas.includes(palabra));
+
+    if (palabrasDisponibles.length === 0) {
+      this.juegoTerminado();
+      return;
+    }
+    this.palabraActual = palabrasDisponibles[Math.floor(Math.random() * palabrasDisponibles.length)].toLowerCase();
+    this.palabrasUtilizadas.push(this.palabraActual); // Agregar la palabra seleccionada a las utilizadas
     console.log(this.palabraActual);
     this.guiones = '_'.repeat(this.palabraActual.length);
     this.letrasUsadas = [];

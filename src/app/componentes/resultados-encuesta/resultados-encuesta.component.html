@@ -1,0 +1,28 @@
+<div class="max-w-full mx-auto p-4">
+<div class="overflow-auto max-h-96 border rounded-lg shadow-lg">
+    <table class="w-full table-auto border-collapse bg-white text-left">
+    <thead class="bg-gray-200">
+        <tr>
+        <th class="px-4 py-2 border-b font-medium text-gray-600">Nombre</th>
+        <th class="px-4 py-2 border-b font-medium text-gray-600">Apellido</th>
+        <th class="px-4 py-2 border-b font-medium text-gray-600">Edad</th>
+        <th class="px-4 py-2 border-b font-medium text-gray-600">Nro. de Teléfono</th>
+        <th class="px-4 py-2 border-b font-medium text-gray-600">¿Cuántas estrellas nos das?</th>
+        <th class="px-4 py-2 border-b font-medium text-gray-600">¿Cuál fue el mejor juego?</th>
+        <th class="px-4 py-2 border-b font-medium text-gray-600">Comentarios finales</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let resultado of resultados$ | async" (click)="seleccionarResultado(resultado)" class="hover:bg-gray-100 cursor-pointer">
+        <td class="px-4 py-2 border-b text-gray-700">{{ resultado.nombre }}</td>
+        <td class="px-4 py-2 border-b text-gray-700">{{ resultado.apellido }}</td>
+        <td class="px-4 py-2 border-b text-gray-700">{{ resultado.edad }}</td>
+        <td class="px-4 py-2 border-b text-gray-700">{{ resultado.nroTelefono }}</td>
+        <td class="px-4 py-2 border-b text-gray-700">{{ resultado.estrellas }}</td>
+        <td class="px-4 py-2 border-b text-gray-700">{{ resultado.mejorJuego }}</td>
+        <td class="px-4 py-2 border-b text-gray-700">{{ resultado.comentarios }}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</div>

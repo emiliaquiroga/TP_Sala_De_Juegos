@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Usuario } from '../../clases/Usuario';
+import { Usuario } from '../../models/Usuario';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { addDoc, Firestore, collection, collectionData,setDoc, DocumentData, doc } from '@angular/fire/firestore';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';

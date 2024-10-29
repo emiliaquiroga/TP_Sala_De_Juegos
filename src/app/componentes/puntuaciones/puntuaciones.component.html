@@ -1,0 +1,41 @@
+<div class="bg-cover bg-center bg-fixed dark:bg-[#321C3A]">
+    <div class="h-500 flex justify-center items-center">
+        <div class="bg-white mx-2 p-4 rounded shadow-md w-full md:w-3/4 lg:w-2/3">
+            <div class="py-3 text-center">
+                <h2 class="text-2xl font-bold mb-2">Tabla de Puntuaciones</h2>
+                <p class="text-sm">¡Aquí puedes ver las puntuaciones de los juegos!</p>
+            </div>
+
+            <!-- Dropdown para seleccionar el juego -->
+            <div class="mb-4">
+                <label for="juego-select" class="block text-gray-700 font-medium mb-2">Selecciona el juego:</label>
+                <select id="juego-select" [(ngModel)]="juegoSeleccionado" (change)="filtrarResultados()" class="bg-[#C8ACD6] border-4 border-black rounded px-3 py-2 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                    <option value="Ahorcado">Ahorcado</option>
+                    <option value="Mayor o Menor">Mayor-Menor</option>
+                    <option value="Preguntados">Preguntas</option>
+                    <option value="juego-propio">Capitales del mundo</option>
+                </select>
+            </div>
+
+            <!-- Tabla de puntuaciones -->
+            <div class="overflow-auto max-h-96 border rounded-lg shadow-lg">
+                <table class="w-full table-auto border-collapse bg-white text-left">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="px-4 py-2 border-b font-medium text-gray-600">Nombre</th>
+                            <th class="px-4 py-2 border-b font-medium text-gray-600">Puntaje</th>
+                            <th class="px-4 py-2 border-b font-medium text-gray-600">Juego</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let puntaje of puntajeFiltrado$ | async" (click)="seleccionarPuntaje(puntaje)" class="hover:bg-gray-100 cursor-pointer">
+                            <td class="px-4 py-2 border-b text-gray-700">{{ puntaje.email }}</td>
+                            <td class="px-4 py-2 border-b text-gray-700">{{ puntaje.puntaje }}</td>
+                            <td class="px-4 py-2 border-b text-gray-700">{{ puntaje.juego }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

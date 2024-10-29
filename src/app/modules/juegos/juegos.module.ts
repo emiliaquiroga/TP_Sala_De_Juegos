@@ -9,10 +9,15 @@ import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.compo
 import {  provideHttpClient } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
+import { PreguntasComponent } from './componentes/preguntas/preguntas.component';
+import { JuegoPropioComponent } from './componentes/juego-propio/juego-propio.component';
 
 
 @NgModule({
-  declarations: [MayorMenorComponent, AhorcadoComponent],
+  declarations: [MayorMenorComponent, 
+    AhorcadoComponent, 
+    PreguntasComponent, 
+    JuegoPropioComponent],
   imports: [
     CommonModule,
     JuegosRoutingModule,

@@ -1,14 +1,51 @@
+<div class="flex items-center justify-center h-screen">
+<div class="flex flex-col items-center w-full max-w-lg p-6 border-4 border-black bg-[#C8ACD6] shadow-[5px_5px_0_rgba(0,0,0,1)] rounded-lg">
 
-    <div class="flex items-center justify-center h-[calc(100vh-200px)]">
-        <div class="group relative block w-60 sm:w-72 lg:w-80 h-64 sm:h-80 lg:h-96">
-            <span class="absolute inset-0 border-4 border-black border-dashed">
-                <div class="relative flex h-full w-full transform items-end border-4 border-black bg-[#C8ACD6] transition-transform group-hover:scale-105 group-hover:shadow-[7px_7px_0_rgba(0,0,0,1)]">
-                    <div class="p-4 !pt-0 sm:p-6 lg:p-8">
-                        <h2 class="mt-4 text-m font-medium sm:text-2xl">SITIO EN CONSTRUCCIÓN</h2>
-                        <p class="mt-4 text-m font-medium sm:text-m">todo a su debido tiempo</p>
-                    </div>
-                </div>
-            </span>
-        </div>
+    <h2 class="text-3xl font-bold text-center mb-6 text-black">¿Cuál es la raza de este perro?</h2>
+
+    <div *ngIf="!finalJuego" class="w-full">
+    <div class="my-6">
+        <img [src]="imagenUrl" alt="Imagen de un perro" *ngIf="imagenUrl" class="rounded-lg border-4 border-black shadow-lg transform transition duration-300 hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px]" />
     </div>
 
+    <div *ngIf="opciones.length > 0" class="flex flex-wrap justify-center gap-4 mb-4">
+        <button *ngFor="let opcion of opciones"
+                [class.selected]="opcion === opcionSeleccionada"
+                (click)="seleccionarOpcion(opcion)"
+                [disabled]="opcionSeleccionada !== null"
+                class="bg-blue-400 border-4 border-black text-black font-bold py-2 px-4 shadow-[5px_5px_0_rgba(0,0,0,1)] transform transition-all duration-300 hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000]">
+        {{ opcion }}
+        </button>
+    </div>
+
+    <p *ngIf="opcionSeleccionada" class="text-lg font-semibold text-center mb-4"
+        [ngClass]="{'text-green-600': acerto, 'text-red-600': !acerto}">
+        {{ acerto ? '¡Correcto! 🎉' : 'Incorrecto' }}
+    </p>
+
+    <div class="flex justify-between w-full mb-6">
+        <p class="text-lg font-bold text-black">Vidas restantes: <span class="text-red-500">{{ vida }} ❤️</span></p>
+        <p class="text-lg font-bold text-black">Puntaje actual: <span class="text-blue-600">{{ puntaje }} ⭐</span></p>
+    </div>
+
+    <button (click)="cargarPerro()" *ngIf="opcionSeleccionada && vida > 0"
+            class="bg-green-400 border-4 border-black text-black font-bold py-2 px-6 shadow-[5px_5px_0_rgba(0,0,0,1)] transform transition-all duration-300 hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000]">
+        Siguiente
+    </button>
+    </div>
+
+    <div *ngIf="finalJuego" class="mt-6 text-center">
+    <p class="text-lg font-semibold text-red-600 mb-4">Juego terminado</p>
+    <p class="text-lg font-semibold text-black mb-6">Puntos obtenidos: {{ puntajeFinal }}. ¡Gracias por jugar!</p>
+
+    <button (click)="reiniciarJuego()" class="bg-red-400 border-4 border-black text-black font-bold py-2 px-6 shadow-[5px_5px_0_rgba(0,0,0,1)] transform transition-all duration-300 hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000]">
+        Jugar de nuevo
+    </button>
+
+    <button (click)="irA('home')" class="bg-gray-400 border-4 border-black text-black font-bold py-2 px-6 shadow-[5px_5px_0_rgba(0,0,0,1)] transform transition-all duration-300 hover:scale-105 hover:translate-x-[-5px] hover:translate-y-[-5px] hover:shadow-[15px_15px_0_-5px_#e9b50b,15px_15px_0_0_#000] mt-4">
+        Salir
+    </button>
+    </div>
+
+</div>
+</div>
